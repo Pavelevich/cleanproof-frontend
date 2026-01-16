@@ -1,110 +1,162 @@
 <p align="center">
-  <img src="public/favicon.jpg" width="120" alt="CleanProof Logo" />
+  <img src="https://img.shields.io/badge/Solana-Privacy%20Hack%202026-9945FF?style=for-the-badge&logo=solana&logoColor=white" alt="Solana Privacy Hack 2026"/>
+  <img src="https://img.shields.io/badge/ZK-Groth16-00D4AA?style=for-the-badge" alt="ZK Proofs"/>
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react" alt="React 18"/>
 </p>
 
-<h1 align="center">CleanProof</h1>
+<h1 align="center">CleanProof Frontend</h1>
 
 <p align="center">
-  <strong>Privacy-Preserving Transactions on Solana</strong>
-</p>
-
-<p align="center">
-  <a href="https://solana.com"><img src="https://img.shields.io/badge/Solana-Devnet-9945FF?style=flat-square&logo=solana" alt="Solana" /></a>
-  <a href="https://reactjs.org"><img src="https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react" alt="React" /></a>
-  <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript" alt="TypeScript" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" /></a>
+  <strong>Privacy-Preserving Transactions UI for Solana</strong>
 </p>
 
 <p align="center">
-  <a href="https://x.com/i/communities/1863652235382755685">Community</a> •
+  <a href="https://cleanproof.xyz">Live App</a> •
   <a href="https://github.com/Pavelevich/privacy-vault">Smart Contracts</a> •
-  <a href="#getting-started">Getting Started</a>
+  <a href="#quick-start">Quick Start</a> •
+  <a href="https://x.com/i/communities/1863652235382755685">Community</a>
 </p>
 
 ---
 
-## What is CleanProof?
+## Overview
 
-CleanProof brings **compliant privacy** to Solana. Based on [Vitalik Buterin's Privacy Pools paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4563364), it enables users to transact privately while proving their funds are not from illicit sources.
+Frontend application for **CleanProof** - a privacy protocol implementing [Vitalik Buterin's Privacy Pools](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4563364) on Solana. Users can transact privately while proving their funds aren't associated with illicit activity.
 
-> **"Privacy is normal. Privacy is not secrecy."**
-
-### The Problem
-
-Traditional mixers offer privacy but can't distinguish between legitimate users and bad actors. This creates regulatory challenges and reputational risks.
-
-### The Solution
-
-CleanProof introduces **Proof of Innocence** - a zero-knowledge mechanism that lets users prove membership in a set of verified "clean" deposits without revealing which specific deposit is theirs.
+<p align="center">
+  <a href="https://cleanproof.xyz">
+    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-cleanproof.xyz-00D4AA?style=for-the-badge" alt="Live Demo"/>
+  </a>
+</p>
 
 ---
 
 ## Features
 
-| Feature | Description |
-|---------|-------------|
-| **Private Deposits** | Deposit SOL into privacy pools using cryptographic commitments |
-| **Anonymous Withdrawals** | Withdraw to any address with ZK proofs - no link to original deposit |
-| **Proof of Innocence** | Generate compliance proofs without compromising privacy |
-| **Association Sets** | Verified, institutional, or community-curated deposit pools |
-| **Relayer Network** | Optional relayers pay gas fees for maximum unlinkability |
+<table>
+<tr>
+<td width="50%">
+
+### Private Deposits
+- Fixed denomination pools (0.1, 1, 10 SOL)
+- Custom amounts supported
+- Cryptographic commitment generation
+
+</td>
+<td width="50%">
+
+### Anonymous Withdrawals
+- ZK proof generation in browser (~300ms)
+- Withdraw to any address
+- Optional relayer for gas privacy
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Proof of Innocence
+- Multiple association sets
+- Compliance without identity reveal
+- Downloadable proof files
+
+</td>
+<td width="50%">
+
+### Wallet Support
+- Phantom
+- Solflare
+- Torus
+- Ledger
+
+</td>
+</tr>
+</table>
 
 ---
 
-## How It Works
+## User Flow
 
 ```
-┌─────────────┐     ZK Commitment      ┌──────────────┐
-│   Deposit   │ ───────────────────▶   │  Privacy     │
-│   (User A)  │                        │    Pool      │
-└─────────────┘                        └──────────────┘
-                                              │
-                                              │ ZK Proof
-                                              ▼
-┌─────────────┐     Verified Withdrawal ┌──────────────┐
-│  Withdraw   │ ◀─────────────────────  │  Association │
-│   (User B)  │                         │     Set      │
-└─────────────┘                         └──────────────┘
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                              CLEANPROOF FLOW                                 │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────┐         ┌──────────────┐         ┌──────────────┐
+  │   DEPOSIT    │         │   WITHDRAW   │         │    PROVE     │
+  │              │         │              │         │  INNOCENCE   │
+  │  ┌────────┐  │         │  ┌────────┐  │         │  ┌────────┐  │
+  │  │ 1 SOL  │  │         │  │ Secret │  │         │  │ Assoc. │  │
+  │  │        │──┼────────▶│  │  Note  │──┼────────▶│  │  Set   │  │
+  │  └────────┘  │         │  └────────┘  │         │  └────────┘  │
+  │      │       │         │      │       │         │      │       │
+  │      ▼       │         │      ▼       │         │      ▼       │
+  │  ┌────────┐  │         │  ┌────────┐  │         │  ┌────────┐  │
+  │  │Commit- │  │         │  │ZK Proof│  │         │  │ZK Proof│  │
+  │  │  ment  │  │         │  │Generated│ │         │  │ "I'm   │  │
+  │  │ Hash   │  │         │  │        │  │         │  │ Clean" │  │
+  │  └────────┘  │         │  └────────┘  │         │  └────────┘  │
+  └──────────────┘         └──────────────┘         └──────────────┘
 ```
 
-1. **Deposit**: User deposits SOL and receives a secret note (ZK commitment)
-2. **Pool**: Funds are mixed with other deposits in the privacy pool
-3. **Withdraw**: User generates a ZK proof to withdraw to any address
-4. **Compliance**: Optional Proof of Innocence shows funds aren't from flagged sources
+1. **Connect** - Link your Solana wallet
+2. **Select Pool** - Choose denomination for optimal anonymity
+3. **Generate Note** - Create cryptographic commitment
+4. **Save Note** - Download secret note (required for withdrawal!)
+5. **Deposit** - Send SOL to privacy pool
+6. **Withdraw** - Use secret note + ZK proof to any address
+7. **Prove** - Generate compliance proof if needed
 
 ---
 
 ## Tech Stack
 
-<table>
-<tr>
-<td align="center" width="150">
-<img src="https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png" width="48" /><br />
-<strong>Solana</strong>
-</td>
-<td align="center" width="150">
-<img src="https://vitejs.dev/logo.svg" width="48" /><br />
-<strong>Vite</strong>
-</td>
-<td align="center" width="150">
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="48" /><br />
-<strong>React</strong>
-</td>
-<td align="center" width="150">
-<img src="https://www.svgrepo.com/show/374146/typescript-official.svg" width="48" /><br />
-<strong>TypeScript</strong>
-</td>
-</tr>
-</table>
-
-- **Smart Contracts**: Anchor Framework (Rust)
-- **ZK Circuits**: Circom + snarkjs
-- **Styling**: Tailwind CSS + shadcn/ui
-- **Wallets**: Phantom, Solflare, Torus, Ledger
+| Layer | Technology |
+|-------|------------|
+| **Framework** | React 18 + TypeScript |
+| **Build** | Vite |
+| **Styling** | Tailwind CSS + shadcn/ui |
+| **ZK Proofs** | snarkjs (Groth16) |
+| **Blockchain** | Solana Web3.js |
+| **Wallets** | Solana Wallet Adapter |
 
 ---
 
-## Getting Started
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── bridge/
+│   │   ├── DepositTab.tsx       # Deposit interface
+│   │   ├── WithdrawTab.tsx      # Withdrawal with ZK proofs
+│   │   └── ProveTab.tsx         # Proof of Innocence generation
+│   ├── ui/                      # shadcn/ui components
+│   ├── Header.tsx               # Navigation + wallet connect
+│   └── StatusBar.tsx            # Footer with links
+│
+├── hooks/
+│   └── usePrivacyVault.ts       # Solana program interactions
+│
+├── lib/
+│   ├── zkProofs.ts              # ZK proof generation (snarkjs)
+│   ├── associationSets.ts       # Compliance set definitions
+│   ├── tokens.ts                # Token configurations
+│   └── relayer.ts               # Relayer service integration
+│
+├── providers/
+│   └── WalletProvider.tsx       # Multi-wallet support
+│
+└── public/circuits/             # Compiled WASM + zkey files
+    ├── withdraw.wasm
+    ├── withdraw_0000.zkey
+    ├── innocence.wasm
+    └── innocence_0000.zkey
+```
+
+---
+
+## Quick Start
 
 ### Prerequisites
 
@@ -114,9 +166,14 @@ CleanProof introduces **Proof of Innocence** - a zero-knowledge mechanism that l
 ### Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/Pavelevich/cleanproof-frontend.git
 cd cleanproof-frontend
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
@@ -129,48 +186,43 @@ npm run build
 npm run preview
 ```
 
+### Get Devnet SOL
+
+```bash
+solana airdrop 2 --url devnet
+```
+
+Or use the faucet: https://faucet.solana.com
+
 ---
 
-## Project Structure
+## Related Repositories
 
-```
-src/
-├── components/
-│   ├── bridge/
-│   │   ├── DepositTab.tsx      # Deposit interface
-│   │   ├── WithdrawTab.tsx     # Withdrawal with ZK proofs
-│   │   └── ProveTab.tsx        # Proof of Innocence generation
-│   └── ui/                     # Reusable UI components
-├── hooks/
-│   └── usePrivacyVault.ts      # Solana program interactions
-├── lib/
-│   ├── zkProofs.ts             # ZK proof generation (snarkjs)
-│   ├── associationSets.ts      # Compliance set definitions
-│   └── relayer.ts              # Relayer service integration
-└── providers/
-    └── WalletProvider.tsx      # Multi-wallet support
-```
+| Repository | Description |
+|------------|-------------|
+| **[privacy-vault](https://github.com/Pavelevich/privacy-vault)** | Smart contracts, ZK circuits, relayer |
+| **[cleanproof-frontend](https://github.com/Pavelevich/cleanproof-frontend)** | This repository - React frontend |
+
+---
+
+## Deployment
+
+| Environment | URL | Status |
+|-------------|-----|--------|
+| **Production** | [cleanproof.xyz](https://cleanproof.xyz) | Live |
+| **Network** | Solana Devnet | Live |
+| **Mainnet** | Coming Soon | - |
 
 ---
 
 ## Security
 
-- **Client-side key generation**: Secret notes never leave your device
-- **Zero-knowledge proofs**: Cryptographic privacy guarantees
-- **Audited circuits**: ZK circuits reviewed for soundness
-- **Open source**: Full transparency of all code
-
----
-
-## Roadmap
-
-- [x] Devnet deployment
-- [x] Core deposit/withdraw functionality
-- [x] Proof of Innocence implementation
-- [ ] Mainnet launch
-- [ ] Mobile app
-- [ ] Multi-token support
-- [ ] Decentralized relayer network
+| Do | Don't |
+|----|-------|
+| Save secret note securely | Share your secret note |
+| Use fixed denominations | Use custom amounts (smaller anonymity set) |
+| Wait between deposit/withdraw | Withdraw immediately after deposit |
+| Use relayer for max privacy | Pay gas from same wallet |
 
 ---
 
@@ -178,21 +230,37 @@ src/
 
 Contributions are welcome! Please read our contributing guidelines before submitting PRs.
 
+```bash
+# Run tests
+npm test
+
+# Lint
+npm run lint
+
+# Build
+npm run build
+```
+
 ---
 
-## Links
+## License
+
+MIT License - See [LICENSE](LICENSE) for details.
+
+---
 
 <p align="center">
-  <a href="https://x.com/i/communities/1863652235382755685">
-    <img src="https://img.shields.io/badge/X-Community-000000?style=for-the-badge&logo=x" alt="X Community" />
-  </a>
-  <a href="https://github.com/Pavelevich/privacy-vault">
-    <img src="https://img.shields.io/badge/GitHub-Smart_Contracts-181717?style=for-the-badge&logo=github" alt="GitHub" />
-  </a>
+  <strong>Built for Solana Privacy Hack 2026</strong>
 </p>
 
----
-
 <p align="center">
-  <sub>Built with privacy in mind</sub>
+  <a href="https://cleanproof.xyz">
+    <img src="https://img.shields.io/badge/Website-cleanproof.xyz-9945FF?style=for-the-badge" alt="Website"/>
+  </a>
+  <a href="https://github.com/Pavelevich/privacy-vault">
+    <img src="https://img.shields.io/badge/Smart%20Contracts-privacy--vault-181717?style=for-the-badge&logo=github" alt="Smart Contracts"/>
+  </a>
+  <a href="https://x.com/i/communities/1863652235382755685">
+    <img src="https://img.shields.io/badge/Community-X-000000?style=for-the-badge&logo=x" alt="X Community"/>
+  </a>
 </p>
