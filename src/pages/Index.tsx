@@ -119,7 +119,7 @@ const Index = () => {
       <Header isConnected={connected} walletAddress={walletAddress} onConnect={handleConnect} onDisconnect={handleDisconnect} />
 
       {/* Main Content */}
-      <main className="relative z-10 min-h-screen min-h-[100dvh] flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-[calc(5rem+env(safe-area-inset-top))] sm:pt-20 pb-20 sm:pb-24">
+      <main className="relative z-10 min-h-screen min-h-[100dvh] flex flex-col items-center justify-start sm:justify-center px-3 sm:px-4 pt-20 sm:pt-20 pb-20 sm:pb-24">
         {/* Hero Text - Hidden on mobile for app-like experience */}
         <motion.div initial={{
         opacity: 0,

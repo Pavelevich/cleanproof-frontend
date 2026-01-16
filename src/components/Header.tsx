@@ -31,7 +31,7 @@ export const Header = ({ isConnected, walletAddress, onConnect, onDisconnect }: 
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-[calc(env(safe-area-inset-top)+0.75rem)] pb-3 bg-background/60 backdrop-blur-xl border-b border-border/30">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-background/60 backdrop-blur-xl border-b border-border/30">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <a
@@ -50,8 +50,8 @@ export const Header = ({ isConnected, walletAddress, onConnect, onDisconnect }: 
         {isConnected ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
+              <Button 
+                variant="outline" 
                 className="gap-2 border-border/50 bg-card/50 backdrop-blur-sm hover:bg-card"
               >
                 <div className="h-2 w-2 rounded-full bg-success animate-pulse" />

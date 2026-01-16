@@ -275,10 +275,10 @@ export const VaultWidget = ({ isConnected, onConnect }: VaultWidgetProps) => {
 
       {/* Proof Result */}
       {proofGenerated && (
-        <div className="bg-primary/10 border border-primary/30 rounded-xl p-4 space-y-3">
+        <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 space-y-3">
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-foreground" />
-            <span className="font-semibold text-foreground">Proof Generated</span>
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            <span className="font-semibold text-green-400">Proof Generated</span>
           </div>
           <p className="text-sm text-muted-foreground">
             This proves your funds are in the "{associationSet === 'verified' ? 'Verified Deposits' : associationSet === 'institutional' ? 'Institutional' : 'Custom'}" set without revealing which specific deposit is yours.
