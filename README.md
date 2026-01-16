@@ -1,73 +1,105 @@
-# Welcome to your Lovable project
+# CleanProof
 
-## Project info
+Privacy-preserving transactions on Solana using Zero-Knowledge Proofs.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Overview
 
-## How can I edit this code?
+CleanProof enables private transactions on Solana while maintaining regulatory compliance through Proof of Innocence - a mechanism based on Vitalik Buterin's Privacy Pools paper. Users can prove their funds are NOT from illicit sources without revealing their identity.
 
-There are several ways of editing your application.
+### Features
 
-**Use Lovable**
+- **Private Deposits** - Deposit SOL into privacy pools with ZK commitments
+- **Anonymous Withdrawals** - Withdraw to any address using ZK proofs
+- **Proof of Innocence** - Generate compliance proofs without compromising privacy
+- **Association Sets** - Choose from verified, institutional, or community-curated deposit sets
+- **Relayer Support** - Optional relayer for maximum transaction privacy
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui
+- **Blockchain**: Solana, Anchor Framework
+- **ZK Circuits**: Circom, snarkjs
+- **Wallets**: Phantom, Solflare, Torus, Ledger
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 18+
+- npm or bun
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/Pavelevich/cleanproof-frontend.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to project directory
+cd cleanproof-frontend
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Usage
 
-**Use GitHub Codespaces**
+### Deposit
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Connect your Solana wallet
+2. Select a fixed denomination pool (for better anonymity) or enter a custom amount
+3. Generate your secret note - **save this securely!**
+4. Confirm the deposit transaction
 
-## What technologies are used for this project?
+### Withdraw
 
-This project is built with:
+1. Paste or upload your secret note
+2. Enter recipient address (can be different from deposit address)
+3. Optionally enable relayer for enhanced privacy
+4. Generate ZK proof and withdraw
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Prove Innocence
 
-## How can I deploy this project?
+1. Upload your secret note
+2. Select an association set (verified deposits, institutional, etc.)
+3. Generate and download your Proof of Innocence
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Architecture
 
-## Can I connect a custom domain to my Lovable project?
+```
+src/
+├── components/
+│   ├── bridge/          # Deposit, Withdraw, Prove tabs
+│   └── ui/              # shadcn/ui components
+├── hooks/
+│   └── usePrivacyVault.ts  # Solana program interactions
+├── lib/
+│   ├── zkProofs.ts      # ZK proof generation
+│   ├── tokens.ts        # Token configurations
+│   └── relayer.ts       # Relayer service
+└── providers/
+    └── WalletProvider.tsx  # Solana wallet adapter
+```
 
-Yes, you can!
+## Network
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Currently deployed on Solana Devnet. Mainnet deployment coming soon.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Security
+
+- Secret notes are generated client-side and never transmitted
+- ZK proofs ensure transaction unlinkability
+- Association sets are maintained by trusted providers
+
+## Links
+
+- [GitHub](https://github.com/Pavelevich/privacy-vault)
+- [Community](https://x.com/i/communities/1863652235382755685)
+
+## License
+
+MIT
