@@ -1,73 +1,116 @@
-# Welcome to your Lovable project
+<p align="center">
+  <img src="https://img.shields.io/badge/Solana-Privacy%20Hack%202026-9945FF?style=for-the-badge&logo=solana&logoColor=white" alt="Solana Privacy Hack 2026"/>
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React 18"/>
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript"/>
+</p>
 
-## Project info
+<h1 align="center">CleanProof Frontend</h1>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+<p align="center">
+  <strong>Privacy-preserving transactions UI for Solana</strong><br/>
+  Zero-knowledge proofs with Proof of Innocence
+</p>
 
-## How can I edit this code?
+<p align="center">
+  <a href="https://cleanproof.xyz">Live App</a> •
+  <a href="https://github.com/Pavelevich/privacy-vault">Backend</a> •
+  <a href="#features">Features</a> •
+  <a href="#quick-start">Quick Start</a>
+</p>
 
-There are several ways of editing your application.
+<p align="center">
+  <a href="https://cleanproof.xyz">
+    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-cleanproof.xyz-00D4AA?style=for-the-badge" alt="Live Demo"/>
+  </a>
+</p>
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Overview
 
-Changes made via Lovable will be committed automatically to this repo.
+CleanProof is the frontend interface for [Privacy Vault](https://github.com/Pavelevich/privacy-vault) - the first Privacy Pools implementation on Solana. Users can make private transactions while proving their funds aren't associated with illicit activity.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Zero-Knowledge Proofs** - Groth16 proof generation in browser (~300ms)
+- **Proof of Innocence** - Prove funds are clean without revealing transaction history
+- **Mobile Support** - WalletConnect integration for mobile wallets
+- **Solana Wallet Adapter** - Support for Phantom, Solflare, and more
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+| Technology | Purpose |
+|------------|---------|
+| **React 18** | UI Framework |
+| **TypeScript** | Type Safety |
+| **Vite** | Build Tool |
+| **TailwindCSS** | Styling |
+| **shadcn/ui** | UI Components |
+| **Framer Motion** | Animations |
+| **snarkjs** | ZK Proof Generation |
+| **@solana/wallet-adapter** | Wallet Connection |
+| **@coral-xyz/anchor** | Solana Program Interaction |
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/Pavelevich/cleanproof-frontend.git
+cd cleanproof-frontend
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Scripts
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run test` | Run tests |
+| `npm run lint` | Lint code |
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+├── components/       # React components
+│   ├── bridge/       # Deposit, Withdraw, Prove tabs
+│   └── ui/           # shadcn/ui components
+├── hooks/            # Custom React hooks
+├── lib/              # Utilities & ZK proof logic
+├── pages/            # Page components
+├── providers/        # Context providers
+└── idl/              # Anchor IDL types
+```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Related Repositories
 
-## Can I connect a custom domain to my Lovable project?
+| Repository | Description |
+|------------|-------------|
+| [privacy-vault](https://github.com/Pavelevich/privacy-vault) | Backend - Solana programs, relayer, circuits |
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT
